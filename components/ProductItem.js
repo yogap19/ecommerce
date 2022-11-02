@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { NumericFormat } from 'react-number-format';
 
 export default function ProductItem({ product }) {
   return (
@@ -17,7 +18,15 @@ export default function ProductItem({ product }) {
           <h2 className="text-lg">{product.name}</h2>
         </Link>
         <p className="mb-2">{product.brand}</p>
-        <p>Rp.{product.price}</p>
+        <p>
+          <NumericFormat
+            value={product.price}
+            allowLeadingZeros
+            thousandSeparator=","
+            displayType="text"
+            prefix="Rp. "
+          />
+        </p>
         <button className="primary-button" type="button">
           Add to cart
         </button>
