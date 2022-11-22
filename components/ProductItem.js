@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { NumericFormat } from 'react-number-format';
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, addToCartHandler }) {
   return (
     <div className="card">
       <Link href={`/product/${product.slug}`}>
@@ -27,7 +27,11 @@ export default function ProductItem({ product }) {
             prefix="Rp. "
           />
         </p>
-        <button className="primary-button" type="button">
+        <button
+          className="primary-button"
+          type="button"
+          onClick={() => addToCartHandler(product)}
+        >
           Add to cart
         </button>
       </div>
