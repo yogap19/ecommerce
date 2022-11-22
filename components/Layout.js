@@ -28,8 +28,8 @@ export default function Layout({ title, children }) {
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md">
-            <Link href="/" className="text-lg font-bold">
-              <p>amazona</p>
+            <Link href="/" className="text-lg font-bold text-emerald-600">
+              Fashion
             </Link>
             <div>
               <Link href="/cart" className="p-2">
