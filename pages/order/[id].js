@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useReducer } from 'react';
 import Layout from '../../components/Layout';
 import { getError } from '../../utils/error';
+import { NumericFormat } from 'react-number-format';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -120,9 +121,23 @@ function OrderScreen() {
                         </Link>
                       </td>
                       <td className=" p-5 text-right">{item.quantity}</td>
-                      <td className="p-5 text-right">${item.price}</td>
                       <td className="p-5 text-right">
-                        ${item.quantity * item.price}
+                        <NumericFormat
+                          value={item.price}
+                          allowLeadingZeros
+                          thousandSeparator=","
+                          displayType="text"
+                          prefix="Rp. "
+                        />
+                      </td>
+                      <td className="p-5 text-right">
+                        <NumericFormat
+                          value={item.quantity * item.price}
+                          allowLeadingZeros
+                          thousandSeparator=","
+                          displayType="text"
+                          prefix="Rp. "
+                        />
                       </td>
                     </tr>
                   ))}
@@ -137,25 +152,57 @@ function OrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Items</div>
-                    <div>${itemsPrice}</div>
+                    <div>
+                      <NumericFormat
+                        value={itemsPrice}
+                        allowLeadingZeros
+                        thousandSeparator=","
+                        displayType="text"
+                        prefix="Rp. "
+                      />
+                    </div>
                   </div>
                 </li>{' '}
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Tax</div>
-                    <div>${taxPrice}</div>
+                    <div>
+                      <NumericFormat
+                        value={taxPrice}
+                        allowLeadingZeros
+                        thousandSeparator=","
+                        displayType="text"
+                        prefix="Rp. "
+                      />
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Shipping</div>
-                    <div>${shippingPrice}</div>
+                    <div>
+                      <NumericFormat
+                        value={shippingPrice}
+                        allowLeadingZeros
+                        thousandSeparator=","
+                        displayType="text"
+                        prefix="Rp. "
+                      />
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>
-                    <div>${totalPrice}</div>
+                    <div>
+                      <NumericFormat
+                        value={totalPrice}
+                        allowLeadingZeros
+                        thousandSeparator=","
+                        displayType="text"
+                        prefix="Rp. "
+                      />
+                    </div>
                   </div>
                 </li>
               </ul>
