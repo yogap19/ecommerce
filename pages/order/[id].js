@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -24,38 +25,42 @@ function OrderScreen() {
   const { query } = useRouter();
   const orderId = query.id;
 
-  const [{ loading, error, order }, dispatch] = useReducer(reducer, {
+  const [
+    {
+      loading,
+      error,
+      order,
+      successPay,
+      loadingPay,
+      loadingDeliver,
+      successDeliver,
+    },
+    dispatch,
+  ] = useReducer(reducer, {
     loading: true,
     order: {},
     error: '',
   });
-  useEffect(() => {
-    const fetchOrder = async () => {
-      try {
-        dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/orders/${orderId}`);
-        dispatch({ type: 'FETCH_SUCCESS', payload: data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
-      }
-    };
-    if (!order._id || (order._id && order._id !== orderId)) {
-      fetchOrder();
+
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'DELIVER_REQUEST':
+        return { ...state, loadingDeliver: true };
+      case 'DELIVER_SUCCESS':
+        return { ...state, loadingDeliver: false, successDeliver: true };
+      case 'DELIVER_FAIL':
+        return { ...state, loadingDeliver: false };
+      case 'DELIVER_RESET':
+        return {
+          ...state,
+          loadingDeliver: false,
+          successDeliver: false,
+        };
+
+      default:
+        state;
     }
-  }, [order, orderId]);
-  const {
-    shippingAddress,
-    paymentMethod,
-    orderItems,
-    itemsPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
-    isPaid,
-    paidAt,
-    isDelivered,
-    deliveredAt,
-  } = order;
+  }
 
   return (
     <Layout title={`Order ${orderId}`}>

@@ -60,18 +60,28 @@ export default function Layout({ title, children }) {
                   </Menu.Button>
                   <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
                     <Menu.Item>
-                      <DropdownLink className="dropdown-link" href="/profile">
+                      <Link className="dropdown-link" href="/profile">
                         Profile
-                      </DropdownLink>
+                      </Link>
                     </Menu.Item>
                     <Menu.Item>
-                      <DropdownLink
-                        className="dropdown-link"
-                        href="/order-history"
-                      >
+                      <Link className="dropdown-link" href="/order-history">
                         Order History
-                      </DropdownLink>
+                      </Link>
                     </Menu.Item>
+                    <Menu.Item>
+                      {session.user.isAdmin && (
+                        <Menu.Item>
+                          <Link
+                            className="dropdown-link"
+                            href="/admin/dashboard"
+                          >
+                            Admin Dashboard
+                          </Link>
+                        </Menu.Item>
+                      )}
+                    </Menu.Item>
+
                     <Menu.Item>
                       <a
                         className="dropdown-link"
