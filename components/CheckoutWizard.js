@@ -11,7 +11,7 @@ export default function CheckoutWizard({ activeStep = 0 }) {
           text-center 
        ${
          index <= activeStep
-           ? 'border-emerald-500   text-emerald-500 font-semibold'
+           ? 'border-emerald-500 text-emerald-500 font-bold '
            : 'border-gray-400 text-gray-400'
        }
           

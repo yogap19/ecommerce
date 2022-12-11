@@ -23,12 +23,12 @@ export default function Home({ products }) {
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
 
-    toast.success('Product added to the cart');
+    toast.success(product.name + ' added to the cart');
   };
 
   return (
     <Layout title="Home Page">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-5">
         {products.map((product) => (
           <ProductItem
             product={product}

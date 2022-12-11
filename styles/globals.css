@@ -37,7 +37,7 @@ a {
 }
 
 .dropdown-link {
-  @apply flex p-2 hover:bg-gray-200 font-semibold;
+  @apply flex p-2 hover:bg-teal-300 font-semibold;
 }
 
 .default-button {
