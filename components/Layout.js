@@ -69,18 +69,22 @@ export default function Layout({ title, children }) {
                         Order History
                       </Link>
                     </Menu.Item>
-                    <Menu.Item>
-                      {session.user.isAdmin && (
-                        <Menu.Item>
-                          <Link
-                            className="dropdown-link"
-                            href="/admin/dashboard"
-                          >
-                            Admin Dashboard
-                          </Link>
-                        </Menu.Item>
-                      )}
-                    </Menu.Item>
+                    {session.user.isAdmin === 'true' ? (
+                      <Menu.Item>
+                        {session.user.isAdmin && (
+                          <Menu.Item>
+                            <Link
+                              className="dropdown-link"
+                              href="/admin/dashboard"
+                            >
+                              Admin Dashboard
+                            </Link>
+                          </Menu.Item>
+                        )}
+                      </Menu.Item>
+                    ) : (
+                      <></>
+                    )}
 
                     <Menu.Item>
                       <a

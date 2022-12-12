@@ -30,7 +30,7 @@ function Auth({ children, adminOnly }) {
     return <div>Loading...</div>;
   }
   console.log(session);
-  if (adminOnly && !session.user.isAdmin) {
+  if (adminOnly && session.user.isAdmin == 'false') {
     router.push('/unauthorized?message=admin login required');
   }
   return children;
