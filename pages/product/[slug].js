@@ -9,6 +9,7 @@ import Product from '../../models/Product';
 import db from '../../utils/db';
 import { Store } from '../../utils/Store';
 import { NumericFormat } from 'react-number-format';
+import StarRatings from 'react-star-ratings';
 
 // react icon
 import { BsBackspace } from 'react-icons/bs';
@@ -65,7 +66,13 @@ export default function ProductScreen(props) {
             <li>Category: {product.category}</li>
             <li>Brand: {product.brand}</li>
             <li>
-              {product.rating} of {product.numReviews} Reviews
+              <StarRatings
+                numberOfStars={5}
+                rating={(product.rating, product.rating)}
+                starDimension="15px"
+                starSpacing="3px"
+                starRatedColor="rgb(250 204 21)"
+              />
             </li>
             <li>Description: {product.description}</li>
           </ul>

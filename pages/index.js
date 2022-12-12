@@ -30,26 +30,23 @@ export default function Home({ products, featuredProducts }) {
   };
   return (
     <Layout title="Home Page">
-      <div className="font-mono font-semibold text-emerald-500 text-center">
-        <h1 className="text-[50px]">
+      <div className="font-mono font-semibold bg-gradient-to-r from-emerald-500 via-lime-500 to-emerald-500 text-center py-3">
+        <h1 className="text-[50px] text-white">
           Welcome <br /> Fashion Shop
         </h1>
       </div>
-      <Carousel showThumbs={false} autoPlay infiniteLoop={true}>
+      {/* <Carousel showThumbs={false} autoPlay>
         {featuredProducts.map((product) => (
           <div key={product._id}>
             <Link href={`/product/${product.slug}`} passHref>
-              <img
-                src={product.image}
-                alt={product.name}
-                sizes={200}
-                // className="h-[500px] w-[500px]"
-              />
+              <a className="flex">
+                <img src={product.banner} alt={product.name} />
+              </a>
             </Link>
           </div>
         ))}
-      </Carousel>
-      <h2 className="h2 my-4">Latest Prodcts</h2>
+      </Carousel> */}
+      <h2 className="h2 my-4">Latest Products</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-5">
         {products.map((product) => (
           <ProductItem
