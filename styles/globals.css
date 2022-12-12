@@ -28,6 +28,10 @@ a {
   @apply mb-5 block rounded-lg border-gray-200 shadow-md;
 }
 
+.card-dashboard {
+  @apply flex justify-between text-white font-semibold mb-5 block rounded-lg border-gray-200 shadow-md;
+}
+
 .primary-button {
   @apply rounded bg-emerald-300 py-2 px-4 shadow outline-none hover:bg-emerald-400 active:bg-emerald-500;
 }

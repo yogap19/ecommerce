@@ -26,6 +26,8 @@ const data = {
       numReviews: 10,
       countInStock: 6,
       description: 'Popular bag for beautiful lady',
+      isFeatured: true,
+      banner: '/images/banner1.jpg',
     },
     {
       name: 'Black bag',
@@ -38,6 +40,8 @@ const data = {
       numReviews: 12,
       countInStock: 17,
       description: 'Modis and Confortable',
+      isFeatured: true,
+      banner: '/images/banner1.jpg',
     },
     {
       name: 'Cuty bag',
@@ -50,6 +54,8 @@ const data = {
       numReviews: 23,
       countInStock: 8,
       description: 'Sweety bag',
+      isFeatured: true,
+      banner: '/images/banner1.jpg',
     },
     {
       name: 'Black Cloud',
@@ -62,6 +68,8 @@ const data = {
       numReviews: 22,
       countInStock: 4,
       description: 'Futuristic and Cool',
+      isFeatured: true,
+      banner: '/images/banner1.jpg',
     },
     {
       name: 'Smoothy shy',
@@ -74,6 +82,8 @@ const data = {
       numReviews: 15,
       countInStock: 14,
       description: 'increase your confidence',
+      isFeatured: true,
+      banner: '/images/banner1.jpg',
     },
     {
       name: 'Grey scale',
@@ -86,6 +96,8 @@ const data = {
       numReviews: 11,
       countInStock: 10,
       description: 'For smart lady',
+      isFeatured: true,
+      banner: '/images/banner1.jpg',
     },
   ],
 };

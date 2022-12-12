@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { NumericFormat } from 'react-number-format';
-
+import StarRatings from 'react-star-ratings';
 export default function ProductItem({ product, addToCartHandler }) {
   return (
     <div className="card">
@@ -18,6 +18,15 @@ export default function ProductItem({ product, addToCartHandler }) {
           <h2 className="text-lg">{product.name}</h2>
         </Link>
         <p className="mb-2">{product.brand}</p>
+        <div>
+          <StarRatings
+            numberOfStars={5}
+            rating={(product.rating, product.rating)}
+            starDimension="15px"
+            starSpacing="3px"
+            starRatedColor="rgb(250 204 21)"
+          />
+        </div>
         <p>
           <NumericFormat
             value={product.price}

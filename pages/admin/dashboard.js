@@ -93,9 +93,9 @@ function AdminDashboardScreen() {
             <li>
               <Link href="/admin/products">Products</Link>
             </li>
-            {/* <li>
+            <li>
               <Link href="/admin/users">Users</Link>
-            </li> */}
+            </li>
           </ul>
         </div>
         <div className="md:col-span-3">

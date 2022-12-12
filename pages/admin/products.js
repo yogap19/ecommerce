@@ -109,9 +109,9 @@ export default function AdminProdcutsScreen() {
                 Products
               </Link>
             </li>
-            {/* <li>
+            <li>
               <Link href="/admin/users">Users</Link>
-            </li> */}
+            </li>
           </ul>
         </div>
         <div className="overflow-x-auto md:col-span-3">

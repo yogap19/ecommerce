@@ -7,8 +7,9 @@ import { ToastContainer } from 'react-toastify';
 import { Menu } from '@headlessui/react';
 import 'react-toastify/dist/ReactToastify.css';
 import { Store } from '../utils/Store';
-import DropdownLink from './DropdownLink';
 
+import { useRouter } from 'next/router';
+import { BsSearch } from 'react-icons/bs';
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
 
@@ -25,6 +26,15 @@ export default function Layout({ title, children }) {
     dispatch({ type: 'CART_RESET' });
     signOut({ callbackUrl: '/login' });
   };
+
+  const [query, setQuery] = useState('');
+
+  const router = useRouter();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    router.push(`/search?query=${query}`);
+  };
+
   return (
     <>
       <Head>
@@ -35,12 +45,32 @@ export default function Layout({ title, children }) {
 
       <ToastContainer position="top-center" limit={1} />
 
-      <div className="flex min-h-screen flex-col justify-between ">
+      <div className="flex min-h-screen flex-col justify-between">
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md">
             <Link href="/" className="text-lg font-bold text-emerald-600">
               Fashion
             </Link>
+            <div>
+              <form
+                onSubmit={submitHandler}
+                className="mx-auto  hidden w-full justify-center md:flex"
+              >
+                <input
+                  onChange={(e) => setQuery(e.target.value)}
+                  type="text"
+                  className="rounded-tr-none rounded-br-none p-1 text-sm   focus:ring-0"
+                  placeholder="Search products"
+                />
+                <button
+                  className="rounded rounded-tl-none rounded-bl-none bg-emerald-300 text-white p-1 text-sm dark:text-black"
+                  type="submit"
+                  id="button-addon2"
+                >
+                  <BsSearch className="h-5 w-5"></BsSearch>
+                </button>
+              </form>
+            </div>
             <div>
               <Link href="/cart" className="p-2 hover:font-semibold">
                 Cart
@@ -58,7 +88,7 @@ export default function Layout({ title, children }) {
                   <Menu.Button className="text-emerald-600 font-semibold hover:font-bold uppercase">
                     {session.user.name}
                   </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
+                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg ">
                     <Menu.Item>
                       <Link className="dropdown-link" href="/profile">
                         Profile
