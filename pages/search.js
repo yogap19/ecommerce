@@ -186,7 +186,7 @@ export default function Search(props) {
                 <option value="featured">Featured</option>
                 <option value="lowest">Price: Low to High</option>
                 <option value="highest">Price: High to Low</option>
-                <option value="toprated">Customer Reviews</option>
+                <option value="toprated">Rating</option>
                 <option value="newest">Newest Arrivals</option>
               </select>
             </div>

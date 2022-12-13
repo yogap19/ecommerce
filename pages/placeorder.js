@@ -57,7 +57,7 @@ export default function PlaceOrderScreen() {
           cartItems: [],
         })
       );
-      router.push(`/order/${data._id}`);
+      router.push(`/order-history`);
     } catch (err) {
       setLoading(false);
       toast.error(getError(err));

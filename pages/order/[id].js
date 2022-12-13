@@ -24,16 +24,15 @@ function OrderScreen() {
   // order/:id
   const { query } = useRouter();
   const orderId = query.id;
-
   const [
     {
       loading,
       error,
-      order,
-      successPay,
-      loadingPay,
-      loadingDeliver,
-      successDeliver,
+      // order,
+      // successPay,
+      // loadingPay,
+      // loadingDeliver,
+      // successDeliver,
     },
     dispatch,
   ] = useReducer(reducer, {

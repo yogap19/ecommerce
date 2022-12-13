@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Store } from '../utils/Store';
 
 import { useRouter } from 'next/router';
-import { BsSearch } from 'react-icons/bs';
+import { BsSearch, BsFillCartCheckFill } from 'react-icons/bs';
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
 
@@ -71,67 +71,71 @@ export default function Layout({ title, children }) {
                 </button>
               </form>
             </div>
-            <div>
-              <Link href="/cart" className="p-2 hover:font-semibold">
-                Cart
-                {cartItemsCount > 0 && (
-                  <sup className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
-                    {cartItemsCount}
-                  </sup>
-                )}
-              </Link>
-
-              {status === 'loading' ? (
-                'Loading'
-              ) : session?.user ? (
-                <Menu as="div" className="relative inline-block">
-                  <Menu.Button className="text-emerald-600 font-semibold hover:font-bold uppercase">
-                    {session.user.name}
-                  </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg ">
-                    <Menu.Item>
-                      <Link className="dropdown-link" href="/profile">
-                        Profile
-                      </Link>
-                    </Menu.Item>
-                    <Menu.Item>
-                      <Link className="dropdown-link" href="/order-history">
-                        Order History
-                      </Link>
-                    </Menu.Item>
-                    {session.user.isAdmin === 'true' ? (
-                      <Menu.Item>
-                        {session.user.isAdmin && (
-                          <Menu.Item>
-                            <Link
-                              className="dropdown-link"
-                              href="/admin/dashboard"
-                            >
-                              Admin Dashboard
-                            </Link>
-                          </Menu.Item>
-                        )}
-                      </Menu.Item>
-                    ) : (
-                      <></>
-                    )}
-
-                    <Menu.Item>
-                      <a
-                        className="dropdown-link"
-                        href="#"
-                        onClick={logoutClickHandler}
-                      >
-                        Logout
-                      </a>
-                    </Menu.Item>
-                  </Menu.Items>
-                </Menu>
-              ) : (
-                <Link href="/login" className="p-2">
-                  Login
+            <div className="flex">
+              <div>
+                <Link href="/cart" className="p-2 hover:font-semibold relative">
+                  <BsFillCartCheckFill className="mr-4" size={30} />
+                  {cartItemsCount > 0 && (
+                    <sup className="absolute ml-1 rounded-full bg-red-600 px-2 py-1 text-xs text-white top-[22px] right-[-30px]">
+                      {cartItemsCount}
+                    </sup>
+                  )}
                 </Link>
-              )}
+              </div>
+
+              <div className="pt-7">
+                {status === 'loading' ? (
+                  'Loading'
+                ) : session?.user ? (
+                  <Menu as="div" className="relative inline-block">
+                    <Menu.Button className="text-emerald-600 font-semibold hover:font-bold uppercase">
+                      {session.user.name}
+                    </Menu.Button>
+                    <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg ">
+                      <Menu.Item>
+                        <Link className="dropdown-link" href="/profile">
+                          Profile
+                        </Link>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <Link className="dropdown-link" href="/order-history">
+                          Order History
+                        </Link>
+                      </Menu.Item>
+                      {session.user.isAdmin === 'true' ? (
+                        <Menu.Item>
+                          {session.user.isAdmin && (
+                            <Menu.Item>
+                              <Link
+                                className="dropdown-link"
+                                href="/admin/dashboard"
+                              >
+                                Admin Dashboard
+                              </Link>
+                            </Menu.Item>
+                          )}
+                        </Menu.Item>
+                      ) : (
+                        <></>
+                      )}
+
+                      <Menu.Item>
+                        <a
+                          className="dropdown-link"
+                          href="#"
+                          onClick={logoutClickHandler}
+                        >
+                          Logout
+                        </a>
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Menu>
+                ) : (
+                  <Link href="/login" className="p-2">
+                    Login
+                  </Link>
+                )}
+              </div>
             </div>
           </nav>
         </header>
