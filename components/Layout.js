@@ -49,7 +49,7 @@ export default function Layout({ title, children }) {
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md">
             <Link href="/" className="text-lg font-bold text-emerald-600">
-              Fashion
+              Toko 000.loved
             </Link>
             <div>
               <form
